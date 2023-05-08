@@ -15,36 +15,24 @@ public class Main {
 
         Thread palindromeCounter = new Thread(() -> {
             for (String word : texts) {
-                if (word.length() == 3 && isPalindrome(word)) {
-                    counter3.getAndAdd(1);
-                } else if (word.length() == 4 && isPalindrome(word)) {
-                    counter4.getAndAdd(1);
-                } else if (word.length() == 5 && isPalindrome(word)) {
-                    counter5.getAndAdd(1);
+                if (isPalindrome(word)) {
+                    countersIncreasing(word.length());
                 }
             }
         });
 
         Thread sameLettersCounter = new Thread(() -> {
             for (String word : texts) {
-                if (word.length() == 3 && isSameLetters(word)) {
-                    counter3.getAndAdd(1);
-                } else if (word.length() == 4 && isSameLetters(word)) {
-                    counter4.getAndAdd(1);
-                } else if (word.length() == 5 && isSameLetters(word)) {
-                    counter5.getAndAdd(1);
+                if (isSameLetters(word)) {
+                    countersIncreasing(word.length());
                 }
             }
         });
 
         Thread increaseOrderCounter = new Thread(() -> {
             for (String word : texts) {
-                if (word.length() == 3 && isIncreaseOrder(word)) {
-                    counter3.getAndAdd(1);
-                } else if (word.length() == 4 && isIncreaseOrder(word)) {
-                    counter4.getAndAdd(1);
-                } else if (word.length() == 5 && isIncreaseOrder(word)) {
-                    counter5.getAndAdd(1);
+                if (isIncreaseOrder(word)) {
+                    countersIncreasing(word.length());
                 }
             }
         });
@@ -109,5 +97,15 @@ public class Main {
             return false;
         }
         return true;
+    }
+
+    public static void countersIncreasing(int wordLength) {
+        if (wordLength == 3) {
+            counter3.getAndAdd(1);
+        } else if (wordLength == 4) {
+            counter4.getAndAdd(1);
+        } else {
+            counter5.getAndAdd(1);
+        }
     }
 }// class
