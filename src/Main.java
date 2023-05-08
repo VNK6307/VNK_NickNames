@@ -93,10 +93,7 @@ public class Main {
             }
             sb.append(chars[i]);
         }
-        if (isSameLetters(sb.toString())) {
-            return false;
-        }
-        return true;
+        return !isSameLetters(sb.toString());
     }
 
     public static void countersIncreasing(int wordLength) {
